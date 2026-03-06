@@ -281,12 +281,13 @@ body {
   letter-spacing: -1px;
 }
 
-/* ── Grid of 10 folder icons (5 columns, 2 rows) ── */
+/* ── Grid of folder icons — fills full available width evenly ── */
 .folders-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 32px 28px;
-  max-width: 900px;
+  /* 5 equal columns, full width */
+  gap: 36px 40px;
+  width: 100%;
 }
 
 /* ── Individual folder / document icon ── */
@@ -629,5 +630,147 @@ body {
 
   .doc-number {
     font-size: 18px;
+  }
+}
+
+/* ============================================================
+   HERO PAGE — FULL MOBILE RESPONSIVENESS
+   Covers phones (≤ 640px) and small tablets (≤ 768px).
+   Uses !important only where inline styles need overriding.
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* ── College branding navbar: shrink logo + text ── */
+  .college-navbar {
+    padding: 16px 20px;
+    gap: 10px;
+    justify-content: center;
+    /* centre on small screens */
+    text-align: center;
+  }
+
+  /* Override the inline width/height set by the user */
+  .college-logo {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  /* Override inline font sizes for college name & dept */
+  .college-name {
+    font-size: 20px !important;
+    text-align: center !important;
+  }
+
+  .college-dept {
+    font-size: 15px !important;
+    text-align: center !important;
+  }
+
+  /* Stack the college info text centrally */
+  .college-info {
+    align-items: center;
+  }
+
+  /* ── Hero content: single column, centred ── */
+  .hero-content {
+    grid-template-columns: 1fr;
+    /* one column */
+    padding: 16px 20px 32px;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Remove the large desktop margin-top from hero-text */
+  .hero-text {
+    margin-top: 0 !important;
+    gap: 20px;
+    align-items: center;
+  }
+
+  /* Main event title: scale from 90px → readable mobile size */
+  h3.hero-title {
+    font-size: clamp(36px, 10vw, 60px) !important;
+    line-height: 1.15;
+  }
+
+  /* Subtitle quote */
+  h5.hero-title {
+    font-size: clamp(14px, 4vw, 18px) !important;
+    line-height: 1.5;
+    max-width: 90vw;
+  }
+
+  /* Buttons: wrap naturally, centred */
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px !important;
+    gap: 12px;
+  }
+
+  .btn-round {
+    padding: 12px 26px;
+    font-size: 15px;
+  }
+
+  /* ── Illustration: show below the text, smaller ── */
+  .hero-illustration {
+    min-height: 180px;
+    order: -1;
+    /* move illustration ABOVE the text on phones */
+  }
+
+  /* Override inline height/width set on the <img> */
+  .hero-illustration img {
+    width: 92vw !important;
+    height: auto !important;
+    max-width: 360px;
+  }
+
+  /* ── Lightbox: stack image + timer vertically on mobile ── */
+  .lightbox-body {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lightbox-box {
+    padding: 14px 12px 16px;
+    max-width: 96vw;
+  }
+
+  .lightbox-box img {
+    max-height: 52vh;
+  }
+}
+
+/* Extra-small phones (≤ 400px) */
+@media (max-width: 400px) {
+
+  h3.hero-title {
+    font-size: 30px !important;
+  }
+
+  h5.hero-title {
+    font-size: 13px !important;
+  }
+
+  .college-name {
+    font-size: 17px !important;
+  }
+
+  .college-dept {
+    font-size: 13px !important;
+  }
+
+  .folders-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .doc-icon {
+    width: 90px;
+    height: 90px;
   }
 }
