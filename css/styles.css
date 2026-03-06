@@ -1,0 +1,633 @@
+/* ============================================================
+   Women's Day Celebration — Shared Styles
+   All pages import this file for consistent look & feel.
+   ============================================================ */
+
+/* ---------- Google Font Import ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* ---------- CSS Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Brand colours extracted from the design */
+  --magenta: #f040fb;
+  /* vivid pink-magenta background */
+  --magenta-dark: #c800d4;
+  /* darker shade for depth */
+  --folder-gold: #f5c518;
+  /* golden yellow for folder icons */
+  --folder-shadow: #d4a800;
+  /* folder shadow / fold colour */
+  --white: #ffffff;
+  --black: #111111;
+  --purple-deep: #4a1068;
+  /* deep purple accent */
+  --purple-mid: #7b2d9e;
+  --btn-purple: #7c3aed;
+  /* navigation button purple */
+  --btn-hover: #5b21b6;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   HERO PAGE  (index.html)
+   ============================================================ */
+
+/* Full-viewport magenta hero */
+.hero-page {
+  min-height: 100vh;
+  background-color: var(--magenta);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------- Scattered polaroid-frame decorations ---------- */
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Each .dot is a small rounded square tilted at various angles */
+.dot {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255 255 255 / 0.35);
+  border-radius: 6px;
+  background: transparent;
+}
+
+/* ---------- Top navigation bar ---------- */
+.navbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 48px;
+}
+
+/* Conference Room stacked logo block */
+.logo-mark {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.logo-square {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.logo-square.orange {
+  background: #f5a623;
+  top: 0;
+  left: 18px;
+}
+
+.logo-square.purple {
+  background: #7b2d9e;
+  top: 14px;
+  left: 0;
+}
+
+.logo-square.pink {
+  background: #e879f9;
+  top: 8px;
+  left: 8px;
+}
+
+.logo-text {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Hero content split layout ---------- */
+.hero-content {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: grid;
+  /* left text  |  right illustration */
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding: 24px 48px 24px;
+  gap: 24px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hero-title {
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+/* ---------- Round buttons ---------- */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-round {
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;
+  /* pill shape */
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-round:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0 0 0 / 0.25);
+}
+
+.btn-round:active {
+  transform: translateY(0);
+}
+
+/* Specific colour variants */
+.btn-round.primary {
+  background: var(--white);
+  color: var(--purple-deep);
+}
+
+.btn-round.secondary {
+  background: rgba(255 255 255 / 0.18);
+  color: var(--white);
+  border: 2px solid rgba(255 255 255 / 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.btn-round.coming-soon {
+  background: rgba(0 0 0 / 0.15);
+  color: rgba(255 255 255 / 0.6);
+  border: 2px dashed rgba(255 255 255 / 0.35);
+  cursor: not-allowed;
+  font-style: italic;
+}
+
+/* ---------- Right-side illustration area ---------- */
+.hero-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  min-height: 340px;
+}
+
+.hero-illustration img {
+  width: 100%;
+  max-width: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 40px rgba(0 0 0 / 0.2));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* ============================================================
+   ROUND PAGES  (round2.html, round3.html)
+   ============================================================ */
+
+.round-page {
+  min-height: 100vh;
+  background-color: var(--magenta);
+  padding: 40px 48px 60px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Back button ── */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 32px;
+  padding: 10px 22px;
+  background: rgba(255 255 255 / 0.22);
+  border: 2px solid rgba(255 255 255 / 0.45);
+  border-radius: 50px;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255 255 255 / 0.35);
+}
+
+/* ── Round page heading ── */
+.round-title {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  color: var(--black);
+  margin-bottom: 48px;
+  letter-spacing: -1px;
+}
+
+/* ── Grid of 10 folder icons (5 columns, 2 rows) ── */
+.folders-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px 28px;
+  max-width: 900px;
+}
+
+/* ── Individual folder / document icon ── */
+.folder-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.folder-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  filter: brightness(1.08);
+}
+
+.folder-card:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* The actual document shape (SVG drawn in JS, or pure CSS below) */
+.doc-icon {
+  width: 140px;
+  height: 140px;
+  position: relative;
+}
+
+/* CSS document shape + folded corner */
+.doc-body {
+  position: absolute;
+  inset: 0;
+  background: var(--folder-gold);
+  border-radius: 10px;
+  /* Diagonal clip to create the folded corner */
+  clip-path: polygon(0% 0%,
+      80% 0%,
+      100% 20%,
+      100% 100%,
+      0% 100%);
+  box-shadow:
+    4px 6px 12px rgba(0 0 0 / 0.18),
+    inset 0 -2px 0 rgba(0 0 0 / 0.08);
+}
+
+/* The folded corner triangle */
+.doc-fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent var(--folder-shadow) transparent transparent;
+  /* rotated so the fold shows a lighter triangle */
+  filter: brightness(0.85);
+}
+
+/* Fold crease line */
+.doc-fold::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: -28px;
+  width: 24px;
+  height: 24px;
+  background: var(--folder-shadow);
+  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+  opacity: 0.55;
+}
+
+/* Number label centred on the document */
+.doc-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+  padding-top: 8px;
+  /* offset for the fold */
+  z-index: 2;
+}
+
+/* ============================================================
+   IMAGE LIGHTBOX / MODAL
+   ============================================================ */
+
+.lightbox-overlay {
+  display: none;
+  /* hidden by default */
+  position: fixed;
+  inset: 0;
+  background: rgba(0 0 0 / 0.78);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+/* JS adds .active to show it */
+.lightbox-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-box {
+  position: relative;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 88vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 24px 64px rgba(0 0 0 / 0.45);
+  animation: popIn 0.22s ease;
+  overflow: visible;
+  /* allow close button to sit on the corner without clipping */
+}
+
+/* Row container: image on the left, timer on the right */
+.lightbox-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+
+@keyframes popIn {
+  from {
+    transform: scale(0.88);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-box img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* "No image" placeholder shown when file is missing */
+.lightbox-placeholder {
+  width: 360px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #999;
+  font-size: 15px;
+  text-align: center;
+}
+
+.lightbox-placeholder svg {
+  opacity: 0.4;
+}
+
+.lightbox-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Close "×" button — sits inside the top-right corner of the card */
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: #333;
+}
+
+/* ============================================================
+   COUNTDOWN TIMER  — shown inside the lightbox below the image
+   ============================================================ */
+
+/* Wrapper that holds the SVG ring + the number */
+.timer-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* SVG circular track */
+.timer-svg {
+  width: 80px;
+  height: 80px;
+  transform: rotate(-90deg);
+  /* start arc from the top */
+}
+
+/* Grey background ring */
+.timer-track {
+  fill: none;
+  stroke: #e5e5e5;
+  stroke-width: 6;
+}
+
+/* Coloured progress ring — stroke-dashoffset animated by JS */
+.timer-ring {
+  fill: none;
+  stroke: #22c55e;
+  /* starts green */
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+}
+
+/* The number displayed in the centre of the ring */
+.timer-number {
+  position: absolute;
+  font-size: 22px;
+  font-weight: 800;
+  color: #222;
+  /* centred over the SVG via JS-positioned wrapper */
+}
+
+/* Overlay container so number sits on top of SVG */
+.timer-badge {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Time's up!" text shown when countdown finishes */
+.timer-done {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ef4444;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: pulse 0.6s ease infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-illustration {
+    min-height: 240px;
+  }
+
+  .folders-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar {
+    padding: 20px 24px;
+  }
+
+  .round-page {
+    padding: 28px 20px 48px;
+  }
+
+  .folders-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .doc-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .doc-number {
+    font-size: 18px;
+  }
+}

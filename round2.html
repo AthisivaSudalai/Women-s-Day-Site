@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>Round 2 — Women's Day Celebration</title>
+    <meta name="description"
+        content="Round 2 entries for the Women's Day Celebration. Click any folder to view the entry image." />
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Code block style for the lightbox placeholder -->
+    <style>
+        code {
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================================================
+     ROUND 2 PAGE
+     Shows 10 numbered document-icon folders on a magenta background.
+     Clicking any folder opens the lightbox to display the entry image.
+================================================================ -->
+    <main class="round-page">
+
+        <!-- ── Back link to hero page ── -->
+        <a href="index.html" class="back-btn" aria-label="Back to home">
+            <!-- Left-arrow icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back
+        </a>
+
+        <!-- ── Page heading ── -->
+        <h1 class="round-title" style="font-size: 40px; color: white;">Round 2 - Tech Visual Identification</h1>
+
+        <!--
+    ── Folder grid ──
+    data-round : subfolder name inside /images/  (images/round2/)
+    data-label : human-readable round name used in the lightbox header
+    JS reads these attributes and renders FOLDER_COUNT cards automatically.
+  -->
+        <div class="folders-grid" id="folders-grid" data-round="round2" data-label="Round 2" role="list"
+            aria-label="Round 2 participant entries">
+            <!-- Folder cards are injected here by js/main.js -->
+        </div>
+
+    </main>
+
+    <!-- Shared JS: renders folders + drives the lightbox -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

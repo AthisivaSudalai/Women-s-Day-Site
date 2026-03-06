@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+
+    <title>Women's Day Celebration — Conference Room</title>
+    <meta name="description"
+        content="Join us for the Women's Day Celebration! See Round 2 and Round 3 entries from our talented participants." />
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Extra styles specific to the hero page -->
+    <style>
+        /*
+     * The hero page only — decorative frame positions
+     * (named .dot elements scattered around the background)
+     */
+
+        /* Top-left area frames */
+        .dot:nth-child(1) {
+            top: 8%;
+            left: 3%;
+            transform: rotate(-12deg);
+            width: 52px;
+            height: 52px;
+        }
+
+        .dot:nth-child(2) {
+            top: 18%;
+            left: 8%;
+            transform: rotate(6deg);
+            width: 38px;
+            height: 38px;
+        }
+
+        .dot:nth-child(3) {
+            top: 38%;
+            left: 5%;
+            transform: rotate(-5deg);
+            width: 44px;
+            height: 44px;
+        }
+
+        .dot:nth-child(4) {
+            top: 62%;
+            left: 2%;
+            transform: rotate(10deg);
+            width: 40px;
+            height: 40px;
+        }
+
+        .dot:nth-child(5) {
+            top: 78%;
+            left: 7%;
+            transform: rotate(-8deg);
+            width: 36px;
+            height: 36px;
+        }
+
+        /* Right cluster */
+        .dot:nth-child(6) {
+            top: 5%;
+            right: 6%;
+            transform: rotate(15deg);
+            width: 48px;
+            height: 48px;
+        }
+
+        .dot:nth-child(7) {
+            top: 80%;
+            right: 4%;
+            transform: rotate(-18deg);
+            width: 42px;
+            height: 42px;
+        }
+
+        /* Bottom & misc */
+        .dot:nth-child(8) {
+            bottom: 6%;
+            left: 30%;
+            transform: rotate(8deg);
+            width: 34px;
+            height: 34px;
+        }
+
+        .dot:nth-child(9) {
+            bottom: 10%;
+            left: 50%;
+            transform: rotate(-6deg);
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Subtle dot grid pattern overlay */
+        .hero-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1.5px, transparent 1.5px);
+            background-size: 26px 26px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ── College branding navbar ── */
+        .college-navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 40px;
+        }
+
+        /* College logo image */
+        .college-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 50%;
+            /* circular crop */
+            background: rgba(255 255 255 / 0.2);
+            /* fallback if no logo yet */
+            flex-shrink: 0;
+        }
+
+        /* Text block next to the logo */
+        .college-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .college-name {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            text-shadow: 0 1px 4px rgba(0 0 0 / 0.2);
+        }
+
+        .college-dept {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255 255 255 / 0.85);
+            letter-spacing: 0.02em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================================================
+     HERO PAGE
+     Layout: navbar on top, then a two-column grid (text | illustration)
+================================================================ -->
+    <main class="hero-page" id="hero">
+
+        <!--
+          ── College Branding Navbar ──
+          HOW TO CUSTOMISE:
+            1. Replace "Your College Name" with your actual college name.
+            2. Replace "Department of Computer Science" with your department.
+            3. Save your college logo as  images/college-logo.png
+               (PNG with transparent background works best).
+        -->
+        <header class="college-navbar">
+            <!-- College logo — place your logo at images/college-logo.png -->
+            <img src="images/college-logo.png" alt="College Logo" class="college-logo" style="width: 100px; height: 100px;" 
+                onerror="this.style.display='none'" />
+
+            <div class="college-info">
+                <span class="college-name" style="text-align: center; font-size: 35px; font-family: 'Times New Roman';">Madras Christian College</span>
+                <span class="college-dept" style="text-align: center; font-size: 25px;">Department of Computer Science (Shift-II)    </span>
+            </div>
+        </header>
+
+        <!-- ── Scattered decorative polaroid frames ── -->
+        <div class="decorations" aria-hidden="true">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+
+
+        <!-- ── Two-column content area ── -->
+        <section class="hero-content">
+
+            <!-- LEFT: Headline + navigation buttons -->
+            <div class="hero-text" style="margin-top: 75px;">
+                <!-- Main heading -->
+                <h3 style="font-size: 90px; font-family: 'Times New Roman'; font-style: italic;" class="hero-title">
+                    TechSHEra-26
+                </h3>
+                <h5 style="font-size: 25px; font-family: 'Times New Roman'; font-style: italic;" class="hero-title">
+                    "A symbol of bravery and a sign of excellence,
+Filling the world with her beautiful presence"
+                </h5>
+                <!-- Event navigation buttons -->
+                <div class="hero-buttons" role="group" aria-label="Event rounds" style="margin-top: 50px;">
+
+                    <!-- Round 2 button → navigates to round2.html -->
+                    <a href="round2.html" class="btn-round secondary" id="btn-round2" aria-label="View Round 2 entries">
+                        <!-- Small arrow icon -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                        Round 2
+                    </a>
+
+                    <!-- Round 3 button → navigates to round3.html -->
+                    <a href="round3.html" class="btn-round secondary" id="btn-round3" aria-label="View Round 3 entries">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                        Round 3
+                    </a>
+
+                    <!--
+          THIRD BUTTON — placeholder for future event.
+          Replace the label, href, and class when ready.
+          Currently shown as "Coming Soon" and is non-interactive.
+        -->
+                    <button class="btn-round coming-soon" id="btn-tbd" disabled aria-disabled="true"
+                        title="This event will be announced soon">
+                        Coming Soon…
+                    </button>
+
+                </div><!-- /hero-buttons -->
+            </div><!-- /hero-text -->
+
+            <!-- RIGHT: Celebratory illustration -->
+            <div class="hero-illustration" aria-hidden="true ">
+                <!--
+        Replace the src with your own illustration or keep the generated one.
+        The float animation is applied via CSS on this <img> tag.
+      -->
+                <img src="images/hero-illustration.png" alt="Women's Day Celebration illustration" id="hero-img" height="500px" width="500px"/>
+            </div>
+
+        </section><!-- /hero-content -->
+
+    </main><!-- /hero -->
+
+    <!-- No JS needed on the hero page itself; navigation is plain <a> links -->
+
+</body>
+
+</html>
