@@ -43,16 +43,27 @@
         </a>
 
         <!-- ── Page heading ── -->
-        <h1 class="round-title" style="font-size: 40px; color: white;">Round 3 - Tech Visual Identification</h1>
+        <h1 class="round-title" style="font-size: 40px; color: white;">Round 3 - Who Am I ?</h1>
 
         <!--
-    ── Folder grid ──
+    ── Folder grid — Section 1 (folders 1–5) ──
     data-round : subfolder name inside /images/  (images/round3/)
     data-label : used in the lightbox header label
+    data-start / data-end : range of folder numbers to render
   -->
-        <div class="folders-grid" id="folders-grid" data-round="round3" data-label="Round 3" role="list"
-            aria-label="Round 3 participant entries">
-            <!-- Folder cards are injected here by js/main.js -->
+        <h2 class="section-subtitle">Guess the logo ?</h2>
+        <div class="folders-grid" id="folders-grid-1" data-round="round3" data-label="Round 3" data-start="1"
+            data-end="5" role="list" aria-label="Round 3 logo entries">
+            <!-- Folder cards 1–5 injected here by js/main.js -->
+        </div>
+
+        <!--
+    ── Folder grid — Section 2 (folders 6–10) ──
+  -->
+        <h2 class="section-subtitle">Guess the famous Women in Tech ?</h2>
+        <div class="folders-grid" id="folders-grid-2" data-round="round3" data-label="Round 3" data-start="6"
+            data-end="10" data-display-start="1" role="list" aria-label="Round 3 women in tech entries">
+            <!-- Folder cards 6–10 injected here by js/main.js -->
         </div>
 
     </main>
