@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Moments — Women's Day Celebration</title>
+    <meta name="description" content="A glimpse of our Department students and Faculties celebrating Women's Day." />
+
+    <!-- Shared stylesheet (magenta background via .round-page) -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+        /* ── Page headings ── */
+        .gallery-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+
+        .gallery-subtitle {
+            font-size: clamp(14px, 2vw, 18px);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 48px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── Grid: 3 columns, first card spans all → 1 on top, 3 below ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* First photo — wide banner spanning all 3 columns */
+        .photo-card:first-child {
+            grid-column: 1 / -1;
+        }
+
+        /* ── Individual photo card ── */
+        .photo-card {
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Photo fits fully inside the card — no cropping */
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Placeholder when no image exists yet */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-placeholder svg {
+            opacity: 0.55;
+        }
+
+        .photo-placeholder code {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Caption gradient bar at the bottom of each card */
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+            border-radius: 0 0 16px 16px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Full-screen preview overlay ── */
+        .viewer-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .viewer-overlay.active {
+            display: flex;
+        }
+
+        .viewer-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 14px;
+            object-fit: contain;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+            animation: popIn 0.22s ease;
+        }
+
+        .viewer-close {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            color: #111;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: background 0.15s;
+            z-index: 10;
+        }
+
+        .viewer-close:hover {
+            background: #eeeeee;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.88);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ── Responsive: single column on phones ── */
+        @media (max-width: 700px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card:first-child {
+                grid-column: 1;
+                aspect-ratio: 4 / 3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================================================
+     GALLERY PAGE — Our Moments
+     1 wide photo on top  +  3 equal photos below.
+     Same magenta background as Round 2 & Round 3 (.round-page).
+     Click any photo to see a full-screen preview.
+================================================================ -->
+    <main class="round-page">
+
+        <!-- Back button -->
+        <a href="index.html" class="back-btn" aria-label="Back to home">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back
+        </a>
+
+        <!-- Heading -->
+        <h1 class="gallery-title">Our Moments ✨</h1>
+        <p class="gallery-subtitle">Department of Computer Science (Shift-II) — Students &amp; Faculty</p>
+
+        <!--
+        HOW TO ADD YOUR PHOTOS:
+          Place images in the  images/gallery/  folder:
+            images/gallery/1.jpg   ← top wide banner
+            images/gallery/2.jpg   ← bottom-left
+            images/gallery/3.jpg   ← bottom-centre
+            images/gallery/4.jpg   ← bottom-right
+          .jpg / .png / .webp all work automatically.
+        -->
+        <div class="gallery-grid" id="gallery-grid" aria-label="Department photo gallery">
+            <!-- Cards are injected by the <script> below -->
+        </div>
+
+    </main>
+
+    <!-- Full-screen preview overlay -->
+    <div class="viewer-overlay" id="viewer" role="dialog" aria-modal="true" aria-label="Photo preview">
+        <button class="viewer-close" id="viewer-close" aria-label="Close">&times;</button>
+        <img class="viewer-img" id="viewer-img" src="" alt="Preview" />
+    </div>
+
+    <script>
+        /* ── Configuration ── */
+        const GALLERY_FOLDER = 'images/gallery';
+        const PHOTO_COUNT = 4;
+        const EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+        /* Caption for each photo — edit these freely */
+        const CAPTIONS = [
+            'Our Faculty',
+            'Our Students',
+            'Celebration Moments',
+            'TechSHEra-26'
+        ];
+
+        /* Try each extension in order; resolve with the first one that loads */
+        function tryLoad(paths) {
+            return new Promise((resolve, reject) => {
+                let i = 0;
+                function attempt() {
+                    if (i >= paths.length) { reject(); return; }
+                    const img = new Image();
+                    img.onload = () => resolve(paths[i]);
+                    img.onerror = () => { i++; attempt(); };
+                    img.src = paths[i];
+                }
+                attempt();
+            });
+        }
+
+        /* Build a single photo card (async — tries to load the image) */
+        async function buildCard(num) {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-label', `View: ${CAPTIONS[num - 1] || 'Photo ' + num}`);
+
+            const paths = EXTENSIONS.map(ext => `${GALLERY_FOLDER}/${num}.${ext}`);
+
+            try {
+                const src = await tryLoad(paths);
+
+                /* Image found — display it */
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = CAPTIONS[num - 1] || `Photo ${num}`;
+                card.appendChild(img);
+
+                /* Caption bar */
+                const cap = document.createElement('div');
+                cap.className = 'photo-caption';
+                cap.textContent = CAPTIONS[num - 1] || `Photo ${num}`;
+                card.appendChild(cap);
+
+                /* Click / keyboard → open preview */
+                const open = () => openPreview(src, CAPTIONS[num - 1]);
+                card.addEventListener('click', open);
+                card.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+                });
+
+            } catch {
+                /* No image yet — show a placeholder */
+                card.innerHTML = `
+                    <div class="photo-placeholder">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+                             stroke="white" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Add your photo here:</span>
+                        <code>${GALLERY_FOLDER}/${num}.jpg</code>
+                    </div>`;
+            }
+
+            return card;
+        }
+
+        /* ── Preview overlay ── */
+        function openPreview(src, caption) {
+            document.getElementById('viewer-img').src = src;
+            document.getElementById('viewer-img').alt = caption || 'Preview';
+            document.getElementById('viewer').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreview() {
+            document.getElementById('viewer').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('viewer-close').addEventListener('click', closePreview);
+        document.getElementById('viewer').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closePreview();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closePreview();
+        });
+
+        /* ── Initialise ── */
+        async function init() {
+            const grid = document.getElementById('gallery-grid');
+            const cards = await Promise.all(
+                Array.from({ length: PHOTO_COUNT }, (_, i) => buildCard(i + 1))
+            );
+            cards.forEach(c => grid.appendChild(c));
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>

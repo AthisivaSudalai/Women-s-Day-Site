@@ -14,6 +14,7 @@
 ───────────────────────────────────────────────────────────── */
 const FOLDER_COUNT_ROUND2 = 20;   // folders shown on Round 2 page
 const FOLDER_COUNT_ROUND3 = 10;   // folders shown on Round 3 page
+const FOLDER_COUNT_ROUND4 = 4;    // folders shown on Round 4 page
 
 const TIMER_SECONDS = 15;         // countdown duration in seconds
 
@@ -375,7 +376,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ── Determine the range of folder numbers to render ── */
     // If the grid carries data-start / data-end, honour them.
     // Otherwise fall back to the full range for the round.
-    const folderCount = roundFolder === 'round2' ? FOLDER_COUNT_ROUND2 : FOLDER_COUNT_ROUND3;
+    const folderCount = roundFolder === 'round2' ? FOLDER_COUNT_ROUND2
+      : roundFolder === 'round4' ? FOLDER_COUNT_ROUND4
+        : FOLDER_COUNT_ROUND3;
     const start = parseInt(grid.dataset.start, 10) || 1;
     const end = parseInt(grid.dataset.end, 10) || folderCount;
 
